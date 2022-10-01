@@ -1,0 +1,24 @@
+.navbar{
+    border: 1px solid gray;
+    margin-top: 2px;
+    width: 100%;
+    background-color:#F8F8F8;;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+.list{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+li{
+    cursor: pointer;
+}
+li:hover{
+    background-color:#5861AE;
+    color: #F8F8F8;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,23 @@
+.login{
+    text-align: center;
+    margin: 10px 400px;
+    padding: 30px 0px;
+    border: 1px solid black;
+}
+.login_name{
+    margin-right: 120px;
+    margin-top: 1rem;
+}
+button{
+    color: white;
+    background-color: #5861AE;
+    border-style: none;
+    padding: 10px 20px;
+    margin-top:15px ;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: gray;
+    color: white;
+}

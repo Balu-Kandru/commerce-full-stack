@@ -1,0 +1,21 @@
+.container{
+    margin-top: 50px;
+}
+
+.item-card {
+    border: 1px solid gray;
+    padding: 15px;
+    width: 95%;
+    margin: 10px;
+    text-align: center;
+}
+button{
+    margin: 5px;
+}
+.opt{
+    background-color: #5861AE ;
+    float: right;
+    padding: 10px;
+    margin-right: 50px;
+    color: white;
+}
