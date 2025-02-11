@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Apple",
+      "category": "Fruit",
+      "price": 2.5,
+      "is_purchased": false,
+      "quantities": "5"
+    },
+    {
+      "name": "Milk",
+      "category": "Dairy",
+      "price": 3.0,
+      "is_purchased": true,
+      "quantities": "2"
+    },
+    {
+      "name": "Bread",
+      "category": "Bakery",
+      "price": 1.5,
+      "is_purchased": false,
+      "quantities": "1"
+    },
+    {
+      "name": "Eggs",
+      "category": "Poultry",
+      "price": 4.0,
+      "is_purchased": true,
+      "quantities": "12"
+    },
+    {
+      "name": "Rice",
+      "category": "Grains",
+      "price": 10.0,
+      "is_purchased": false,
+      "quantities": "1kg"
+    }
+  ]
+  

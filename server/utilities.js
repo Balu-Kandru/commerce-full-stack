@@ -1,5 +1,6 @@
 const userModal = require("./model/usermodel");
 const bcrypt = require("bcryptjs");
+
 const checkExistingUser = async (username)=> {
     let existingUser = false;
     await userModal.find({username: username}).then((userData)=> {
@@ -20,4 +21,12 @@ const generatePasswordHash = (password) => {
         })
     });
 }
-module.exports = {checkExistingUser, generatePasswordHash};
+
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017";
+const port = process.env.PORT || 3001;
+const secretKey = process.env.SECRET_KEY || "New_Project";
+
+module.exports = {
+    checkExistingUser, generatePasswordHash,
+    dbUrl, port, secretKey
+};

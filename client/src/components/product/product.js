@@ -3,110 +3,114 @@ import { useEffect, useState } from "react";
 import "./product.css"
 import Header from "../header/header";
 import Navbar from "../navbar/navbar";
+import { baseUrl } from "../utilities";
 
 
-const Product = ()=> {
+const Product = () => {
     const [Type, setType] = useState("");
     const [items, setItems] = useState([]);
     const authToken = localStorage.getItem("authorization");
 
-    useEffect(()=>{
-        if(Type.length){
+    useEffect(() => {
+        if (Type.length) {
             axios({
                 method: "GET",
-                url: `http://localhost:3001/product/${Type}`,
-            }).then((itemData)=> {
+                url: `${baseUrl}/product/${Type}`,
+            }).then((itemData) => {
                 setItems(itemData.data);
-            }).catch((err)=> {
+            }).catch((err) => {
                 console.log(err)
                 console.log("ji")
             })
-        }else{
+        } else {
             axios({
                 method: "GET",
-                url: "http://localhost:3001/product/show"
-            }).then((itemData)=> {
+                url: `${baseUrl}/product/show`
+            }).then((itemData) => {
                 setItems(itemData.data.item);
-            }).catch((err)=> {
+            }).catch((err) => {
                 console.log(err)
             })
         }
 
-    },[Type])
-    const handleBuy = (item)=> {
+    }, [Type])
+
+    const handleBuy = (item) => {
         console.log(item)
         const payload = {
             id: item._id,
         }
 
         axios({
-            url: "http://localhost:3001/product/buy",
+            url: `${baseUrl}/product/buy`,
             method: "POST",
-            headers:{
+            headers: {
                 authorization: authToken,
             },
             data: payload
-        }).then((res)=> {
+        }).then((res) => {
             alert(res.data)
-        }).catch((err)=> {
+        }).catch((err) => {
             console.log(err)
         })
 
     }
-    const handleCart = (item)=> {
+
+    const handleCart = (item) => {
         const payload = {
             itemid: item._id,
-            price:item.price,
-            name:item.name
+            price: item.price,
+            name: item.name
         }
         axios({
-            url: "http://localhost:3001/cart/add",
+            url: `${baseUrl}/cart/add`,
             method: "POST",
-            headers:{
+            headers: {
                 authorization: authToken,
             },
             data: payload
-        }).then((res)=> {
+        }).then((res) => {
             alert(res.data)
-        }).catch((err)=> {
+        }).catch((err) => {
             console.log(err)
         })
     }
-    return(
-        <>
-        <Header/>
-        <Navbar/>
 
-        <div>
-            <select className='opt' onChange={(e) => setType(e.target.value)}>
-                <option value="" >All</option>
-                <option value="shirts">shirts</option>
-                <option value="jeans">jeans</option>
-                <option value="footwear">footwear</option>
-            </select>
-        </div>
-        <div className="container">
-            {items.map((item,i)=> {
-                return (
-                    <div className="item-card" key={i}>
-                        <div>
-                            {item.name}
+    return (
+        <>
+            <Header />
+            <Navbar />
+
+            <div>
+                <select className='opt' onChange={(e) => setType(e.target.value)}>
+                    <option value="" >All</option>
+                    <option value="shirts">shirts</option>
+                    <option value="jeans">jeans</option>
+                    <option value="footwear">footwear</option>
+                </select>
+            </div>
+            <div className="container">
+                {items.map((item, i) => {
+                    return (
+                        <div className="item-card" key={i}>
+                            <div>
+                                {item.name}
+                            </div>
+                            <div>
+                                {item.category}
+                            </div>
+                            <div>
+                                {`Rs. ${item.price}`}
+                            </div>
+                            <button onClick={() => { handleCart(item) }}>Add To Cart</button>
+                            <button onClick={() => { handleBuy(item) }}>Buy Now</button>
                         </div>
-                        <div>
-                            {item.category}
-                        </div>
-                        <div>
-                            {`Rs. ${item.price}`}
-                        </div>
-                        <button onClick={()=> {handleCart(item)}}>Add To Cart</button>
-                        <button onClick={()=> {handleBuy(item)}}>Buy Now</button> 
-                    </div>
-                )
-            })}
-            
-        </div>
+                    )
+                })}
+
+            </div>
         </>
     )
-    
+
 };
 export default Product

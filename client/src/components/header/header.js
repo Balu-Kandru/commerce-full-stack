@@ -1,12 +1,12 @@
 import "./header.css"
 
-const Header=()=>{
-    
-    return(
+const Header = () => {
+
+    return (
         <>
-        <div className="header">
-            <h1>Shopping App</h1>
-        </div>
+            <div className="header">
+                <h1>Shopping App</h1>
+            </div>
         </>
     )
 }
